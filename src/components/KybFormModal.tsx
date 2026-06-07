@@ -42,7 +42,7 @@ export default function KybFormModal({ open, onClose }: Props) {
       }}
       role="dialog"
       aria-modal="true"
-      aria-label="KYB Application Form"
+      aria-label="Seed Stage Spotlight Application Form"
     >
       {/* Modal panel — full height scrollable */}
       <div

@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { form } = body;
 
-    if (!form || !form.legal_name) {
+    if (!form || !form.full_name) {
       return NextResponse.json({ error: 'Invalid submission data' }, { status: 400 });
     }
 
