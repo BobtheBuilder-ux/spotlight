@@ -3,6 +3,7 @@
 import { DollarSign, TrendingUp, Tv2, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { PrimaryButton, SectionLabel, useInView } from './ui';
+import { useKybModal } from './KybModalContext';
 
 const STAT_ICONS = [
   <Tv2 size={22} key="tv" />,
@@ -15,6 +16,7 @@ const STAT_COLORS = ['blue', 'green', 'blue', 'green'] as const;
 
 export default function WhatThisIs() {
   const { ref, inView } = useInView();
+  const { openKybModal } = useKybModal();
   const t = useTranslations('whatThisIs');
 
   const steps = (t.raw('steps') as { step: string; desc: string }[]);
@@ -64,7 +66,7 @@ export default function WhatThisIs() {
               ))}
             </div>
             <div className="pt-2">
-              <PrimaryButton>{t('cta')}</PrimaryButton>
+              <PrimaryButton onClick={openKybModal}>{t('cta')}</PrimaryButton>
             </div>
           </div>
 

@@ -3,6 +3,7 @@
 import { CheckCircle, Star, TrendingUp, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { PrimaryButton, SectionLabel, useInView } from './ui';
+import { useKybModal } from './KybModalContext';
 
 const CRITERIA_ICONS = [
   <Zap size={16} key="zap" />,
@@ -13,6 +14,7 @@ const CRITERIA_ICONS = [
 
 export default function ForFounders() {
   const { ref, inView } = useInView();
+  const { openKybModal } = useKybModal();
   const t = useTranslations('forFounders');
   const criteria = (t.raw('criteria') as { label: string; desc: string }[]);
 
@@ -51,7 +53,7 @@ export default function ForFounders() {
           </div>
 
           <div className="space-y-3 pt-2">
-            <PrimaryButton className="!px-10 !py-4 !text-base">{t('cta')}</PrimaryButton>
+            <PrimaryButton className="!px-10 !py-4 !text-base" onClick={openKybModal}>{t('cta')}</PrimaryButton>
             <p className="text-ink-400 text-sm font-body">{t('subtext')}</p>
           </div>
         </div>

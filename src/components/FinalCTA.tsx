@@ -3,9 +3,11 @@
 import { CheckCircle, Play } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Badge, PrimaryButton, SecondaryButton, useInView } from './ui';
+import { useKybModal } from './KybModalContext';
 
 export default function FinalCTA() {
   const { ref, inView } = useInView();
+  const { openKybModal } = useKybModal();
   const t = useTranslations('finalCTA');
   const features = (t.raw('features') as string[]);
 
@@ -35,7 +37,7 @@ export default function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-            <PrimaryButton className="!px-10 !py-4 !text-base sm:w-auto w-full justify-center">
+            <PrimaryButton className="!px-10 !py-4 !text-base sm:w-auto w-full justify-center" onClick={openKybModal}>
               {t('ctaPrimary')}
             </PrimaryButton>
             <SecondaryButton className="!px-10 !py-4 !text-base sm:w-auto w-full justify-center" onClick={() => window.open('https://youtube.com/@9qctradeplatform', '_blank')}>

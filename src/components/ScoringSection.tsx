@@ -3,6 +3,7 @@
 import { BarChart3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { PrimaryButton, SectionLabel, useInView } from './ui';
+import { useKybModal } from './KybModalContext';
 
 const SCORES = [90, 75, 82, 60, 88, 70];
 
@@ -33,6 +34,7 @@ function ScoreBar({
 
 export default function ScoringSection() {
   const { ref, inView } = useInView();
+  const { openKybModal } = useKybModal();
   const t = useTranslations('scoring');
   const criteriaLabels = (t.raw('criteria') as string[]);
 
@@ -60,7 +62,7 @@ export default function ScoringSection() {
             <div className="bg-navy-800/40 border border-white/6 rounded-xl p-5">
               <p className="text-ink-400 text-sm font-body">{t('note')}</p>
             </div>
-            <PrimaryButton>{t('cta')}</PrimaryButton>
+            <PrimaryButton onClick={openKybModal}>{t('cta')}</PrimaryButton>
           </div>
 
           {/* Right: Score visualization */}

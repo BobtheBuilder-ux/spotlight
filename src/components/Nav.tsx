@@ -5,10 +5,12 @@ import { Tv2 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { PrimaryButton, SecondaryButton } from './ui';
+import { useKybModal } from './KybModalContext';
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openKybModal } = useKybModal();
   const t = useTranslations('nav');
   const locale = useLocale();
   const router = useRouter();
@@ -84,7 +86,7 @@ export default function Nav() {
           <SecondaryButton className="!px-4 !py-2 text-xs" onClick={() => window.open('https://youtube.com/@9qctradeplatform', '_blank')}>
             {t('watchEpisodes')}
           </SecondaryButton>
-          <PrimaryButton className="!px-4 !py-2 text-xs">
+          <PrimaryButton className="!px-4 !py-2 text-xs" onClick={openKybModal}>
             {t('applyToPitch')}
           </PrimaryButton>
         </div>
@@ -146,7 +148,7 @@ export default function Nav() {
             <SecondaryButton className="w-full justify-center !py-2.5" onClick={() => window.open('https://youtube.com/@9qctradeplatform', '_blank')}>
               {t('watchEpisodes')}
             </SecondaryButton>
-            <PrimaryButton className="w-full justify-center !py-2.5">
+            <PrimaryButton className="w-full justify-center !py-2.5" onClick={openKybModal}>
               {t('applyToPitch')}
             </PrimaryButton>
           </div>

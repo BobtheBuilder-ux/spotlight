@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { BarChart3, CheckCircle, Play, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { PrimaryButton, SecondaryButton, Badge } from './ui';
-import KybFormModal from './KybFormModal';
+import { useKybModal } from './KybModalContext';
 
 function HeroVerdictBadge({ label, color }: { label: string; color: string }) {
   return (
@@ -17,7 +16,7 @@ function HeroVerdictBadge({ label, color }: { label: string; color: string }) {
 }
 
 export default function Hero() {
-  const [kybOpen, setKybOpen] = useState(false);
+  const { openKybModal } = useKybModal();
   const t = useTranslations('hero');
 
   const STATS = [
@@ -79,7 +78,7 @@ export default function Hero() {
             >
               <PrimaryButton
                 className="!py-4 !px-8 !text-base"
-                onClick={() => setKybOpen(true)}
+                onClick={openKybModal}
               >
                 {t('ctaPrimary')}
               </PrimaryButton>
@@ -216,7 +215,5 @@ export default function Hero() {
       </div>
     </section>
 
-    {/* KYB Application Modal */}
-    <KybFormModal open={kybOpen} onClose={() => setKybOpen(false)} />
   </>);
 }

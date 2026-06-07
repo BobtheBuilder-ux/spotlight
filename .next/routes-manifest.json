@@ -49,6 +49,12 @@
       "regex": "^/api/kyb(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/kyb(?:/)?$"
+    },
+    {
+      "page": "/api/partner",
+      "regex": "^/api/partner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/partner(?:/)?$"
     }
   ],
   "dataRoutes": [],

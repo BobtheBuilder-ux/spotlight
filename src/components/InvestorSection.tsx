@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { BarChart3, CheckCircle, Eye, MessageSquare, Target, TrendingUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { PrimaryButton, SectionLabel, useInView } from './ui';
+import PartnerFormModal from './PartnerFormModal';
 
 const CRITERIA_ICONS = [
   <Target size={16} key="target" />,
@@ -18,6 +20,7 @@ const ACTION_STYLES = [
 ];
 
 export default function InvestorSection() {
+  const [partnerOpen, setPartnerOpen] = useState(false);
   const { ref, inView } = useInView();
   const t = useTranslations('investorSection');
   const criteria = (t.raw('criteria') as string[]);
@@ -124,10 +127,11 @@ export default function InvestorSection() {
                 </div>
               ))}
             </div>
-            <PrimaryButton>{t('cta')}</PrimaryButton>
+            <PrimaryButton onClick={() => setPartnerOpen(true)}>{t('cta')}</PrimaryButton>
           </div>
         </div>
       </div>
+      <PartnerFormModal open={partnerOpen} onClose={() => setPartnerOpen(false)} />
     </section>
   );
 }
